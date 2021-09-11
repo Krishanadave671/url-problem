@@ -54,13 +54,8 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String urlText = url.getText().toString();
-                String [] addresses = {"harry@codewithharry.com","ypdalvi@gmail.com"};
-
-
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("*/*");
-                intent.putExtra(Intent.EXTRA_EMAIL, addresses);
-                intent.putExtra(Intent.EXTRA_SUBJECT, "yash subject");
+                Uri webpage = Uri.parse(urlText);
+                Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
                 if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
                     startActivity(intent);
                 }
